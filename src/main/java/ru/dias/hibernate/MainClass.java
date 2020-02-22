@@ -9,7 +9,7 @@ import java.util.List;
 public class MainClass {
     public static void main(String[] args) {
         SessionFactory factory = new Configuration()
-                .configure("hibernate.cfg.xml")
+                .configure("configs/hibernate.cfg.xml")
                 .addAnnotatedClass(Book.class)
                 .addAnnotatedClass(Author.class)
                 .addAnnotatedClass(Reader.class)
@@ -39,7 +39,7 @@ public class MainClass {
 //            session.save(tmpBook);
 //            session.getTransaction().commit();
 
-           // CREATE Author
+        // CREATE Author
 //            session = factory.getCurrentSession();
 //            Author author = new Author();
 //            author.setName("a3");
@@ -63,7 +63,7 @@ public class MainClass {
 //            session.close();
 //        }
 
-           // READ
+        // READ
 //            session = factory.getCurrentSession();
 //            session.beginTransaction();
 //            Book book = session.get(Book.class, 1);
@@ -78,13 +78,13 @@ public class MainClass {
 //            session.getTransaction().commit();
 
 
-             session = factory.getCurrentSession();
-            session.beginTransaction();
+        session = factory.getCurrentSession();
+        session.beginTransaction();
 //            Reader reader = session.get(Reader.class, 1);
         List<Reader> readers = session.createQuery("from Reader").getResultList();
         System.out.println(readers);
 //            System.out.println(reader);
-            session.getTransaction().commit();
+        session.getTransaction().commit();
 
 
 //            UPDATE
